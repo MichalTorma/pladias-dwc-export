@@ -5,7 +5,6 @@ SELECT
     r.latitude AS decimalLatitude,
     r.longitude AS decimalLongitude,
     r.datum AS eventDate,
-    'CZ' AS countryCode, -- Adjust according to your data
     r.locality,
     r.altitude_min AS minimumElevationInMeters,
     r.altitude_max AS maximumElevationInMeters,
