@@ -18,12 +18,10 @@ SELECT
     r.gps_coords_precision AS coordinatePrecision,
     r.datum_precision AS verbatimEventDate,
     r.nearest_town_text AS locality,
-    h.name AS habitat, -- Assuming habitat information is available in a related table
     r.phytochorion_id AS locationID -- Example of using phytochorion_id as a location ID
 FROM
     atlas.records AS r
 LEFT JOIN public.taxons AS t ON r.taxon_id = t.id
 LEFT JOIN atlas.records_authors AS ra ON r.id = ra.records_id
-LEFT JOIN atlas.herbariums AS h ON r.id = h.id -- This line is speculative; adjust based on actual data mapping
 WHERE
     r.include_in_map = TRUE;
