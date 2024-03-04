@@ -1,0 +1,9 @@
+version: '3.4'
+
+services:
+  pladiasdwcexport:
+    image: pladias-dwc-export
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+
