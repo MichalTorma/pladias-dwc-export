@@ -1,2 +1,6 @@
 sqlalchemy
 pandas
+requests
+psycopg2
+ipykernel
+zenodo_client

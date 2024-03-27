@@ -6,4 +6,8 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile
-
+    command: ["tail", "-f", "/dev/null"]
+    volumes:
+      - ./app:/app
+    env_file:
+      - .env
