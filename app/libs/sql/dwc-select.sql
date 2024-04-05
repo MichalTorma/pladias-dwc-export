@@ -1,8 +1,8 @@
-WITH temp_taxons AS (
-    SELECT taxons.id, name_lat,
+WITH temp_protection AS (
+    SELECT taxons.id,
            CASE WHEN value != 200000 THEN TRUE
                 ELSE FALSE END AS is_protected
-    FROM taxons
+    FROM public.taxons
         LEFT JOIN measurements.data_enum AS de ON taxons.id = de.taxon_id
     WHERE de.trait_id = 200001 AND entry_type = 1 AND is_enabled
 )
@@ -42,7 +42,8 @@ SELECT
          ELSE NULL END AS coordinatePrecision
 FROM
     atlas.records AS r
-        LEFT JOIN temp_taxons AS t ON r.taxon_id = t.id
+        LEFT JOIN temp_protection AS tp ON r.taxon_id = tp.id
+        LEFT JOIN public.taxons AS t ON r.taxon_id = t.id
         LEFT JOIN atlas.projects AS p ON r.project_id = p.id
 WHERE
     r.validation_status != 2

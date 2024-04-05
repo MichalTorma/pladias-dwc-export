@@ -30,7 +30,8 @@ def main():
     query_to_csv(sql_query, csv_file_path)
 
     deposition_id = os.environ.get("ZENODO_DEPOSITION_ID")
-    zen = ZenodoDeposition(deposition_id=deposition_id, sandbox=True)  # Ensure sandbox is appropriately set
+    zenodo_token = os.environ.get("ZENODO_TOKEN")
+    zen = ZenodoDeposition(zenodo_token=zenodo_token, deposition_id=deposition_id, sandbox=True)  # Ensure sandbox is appropriately set
 
     try:
         logger.info("Retrieving original metadata.")
